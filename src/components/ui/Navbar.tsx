@@ -80,7 +80,7 @@ export const Navbar = () => {
           </div>
 
           <li className='hover:text-helper cursor-pointer transition-colors'>Sobre nosotros</li>
-          <li className='hover:text-helper cursor-pointer transition-colors'>Objetivos</li>
+          <li className='hover:text-helper cursor-pointer transition-colors'>Tablero</li>
           <li className='hover:text-helper cursor-pointer transition-colors'>Postular</li>
           <li className='hover:text-helper cursor-pointer transition-colors'>Contacto</li>
         </ul>
@@ -122,7 +122,7 @@ export const Navbar = () => {
             Sobre nosotros
           </li>
           <li className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded'>
-            Objetivos
+            Tablero
           </li>
           <li className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded'>
             Postular
