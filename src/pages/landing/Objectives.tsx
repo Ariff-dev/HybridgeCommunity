@@ -20,14 +20,14 @@ export const Objectives = () => {
   const columns = [
     {
       id: 'tareas',
-      title: 'Tareas',
+      title: 'Iniciativas, Proyectos y Tareas',
       icon: ListTodo,
       color: 'complementary',
       items: tasks.tareas
     },
     {
       id: 'trabajando',
-      title: 'Trabajando',
+      title: 'En progreso',
       icon: Clock,
       color: 'primary',
       items: tasks.trabajando
@@ -61,10 +61,10 @@ export const Objectives = () => {
           transition={{ duration: 0.6 }}
         >
           <div className='inline-block mb-4 px-4 py-2 bg-complementary/10 border border-complementary/30 rounded-full'>
-            <span className='text-complementary text-sm font-mono tracking-wider'>{'<OBJETIVOS />'}</span>
+            <span className='text-complementary text-sm font-mono tracking-wider'>{'<BOARD />'}</span>
           </div>
           <h2 className='text-5xl font-bold text-secondary mb-4 tracking-tight'>
-            Nuestros Objetivos
+            Tablero de la comunidad
           </h2>
           <div className='flex items-center justify-center gap-2 mb-6'>
             <div className='w-12 h-0.5 bg-linear-to-r from-transparent to-complementary'></div>
