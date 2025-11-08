@@ -60,8 +60,8 @@ export const Objectives = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className='inline-block mb-4 px-4 py-2 bg-complementary/10 border border-complementary/30 rounded-full'>
-            <span className='text-complementary text-sm font-mono tracking-wider'>{'<BOARD />'}</span>
+          <div className='inline-block mb-4 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full'>
+            <span className='text-primary text-sm font-mono tracking-wider'>{'<BOARD />'}</span>
           </div>
           <h2 className='text-5xl font-bold text-secondary mb-4 tracking-tight'>
             Tablero de la comunidad

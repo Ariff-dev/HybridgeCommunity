@@ -44,7 +44,7 @@ export const Postulate = () => {
             
             <div className='relative z-10 text-center'>
               <div className='inline-block mb-4 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full'>
-                <span className='text-primary text-sm font-mono tracking-wider'>{'<ÚNETE />'}</span>
+                <span className='text-primary text-sm font-mono tracking-wider'>{'<Apply />'}</span>
               </div>
               
               <h3 className='text-3xl md:text-4xl font-bold text-secondary mb-4'>
