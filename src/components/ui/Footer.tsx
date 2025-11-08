@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Mail, Heart, Code, Users } from 'lucide-react'
+import { Github, Mail, Heart, Code, Users } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export const Footer = () => {
