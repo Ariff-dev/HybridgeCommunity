@@ -1,6 +1,11 @@
 import { CheckCircle, Clock, ListTodo } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+
+
+
+
+
 // Array de ejemplo - puedes modificarlo como necesites
 const tasks = {
   tareas: [
@@ -17,6 +22,8 @@ const tasks = {
 }
 
 export const Objectives = () => {
+
+
   const columns = [
     {
       id: 'tareas',
