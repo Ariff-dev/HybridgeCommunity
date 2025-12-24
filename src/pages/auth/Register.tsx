@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react'
+import { Mail, Lock, LogIn, Eye, EyeOff, User } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
 
-export const Login = () => {
+export const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [formData, setFormData] = useState({
+        name: '',
         email: '',
         password: ''
     })
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Login attempt:', formData)
-        // TODO: Add authentication logic here
-        alert('Login functionality will be implemented soon!')
+        console.log('Register attempt:', formData)
+        // TODO: Add registration logic here
+        alert('Registro exitoso! La funcionalidad se implementará pronto.')
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ export const Login = () => {
             {/* Gradient overlay */}
             <div className='absolute inset-0 bg-linear-to-b from-transparent via-transparent to-contrast/30 pointer-events-none' />
 
-            {/* Login Card */}
+            {/* Register Card */}
             <motion.div
                 className='relative z-10 bg-contrast rounded-2xl shadow-2xl max-w-md w-full border border-secondary/20 overflow-hidden'
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -49,18 +49,39 @@ export const Login = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <img src={Logo} alt='Hybrige Logo' width={60} height={60} className='mx-auto mb-4' />
-                        <h1 className='text-3xl font-bold text-secondary mb-2'>Bienvenido</h1>
-                        <p className='text-secondary/60 text-sm'>Inicia sesión en tu cuenta</p>
+                        <h1 className='text-3xl font-bold text-secondary mb-2'>Crear Cuenta</h1>
+                        <p className='text-secondary/60 text-sm'>Regístrate para comenzar</p>
                     </motion.div>
                 </div>
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className='p-8 space-y-6'>
-                    {/* Email Field */}
+                    {/* Name Field */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        <label className='flex items-center gap-2 text-sm font-semibold text-secondary mb-2'>
+                            <User className='w-4 h-4 text-helper' />
+                            Nombre completo
+                        </label>
+                        <input
+                            type='text'
+                            name='name'
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className='w-full px-4 py-3 bg-secondary/5 border border-secondary/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-helper focus:border-transparent transition-all text-secondary placeholder:text-secondary/40'
+                            placeholder='Tu nombre completo'
+                        />
+                    </motion.div>
+
+                    {/* Email Field */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
                     >
                         <label className='flex items-center gap-2 text-sm font-semibold text-secondary mb-2'>
                             <Mail className='w-4 h-4 text-complementary' />
@@ -81,7 +102,7 @@ export const Login = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
                     >
                         <label className='flex items-center gap-2 text-sm font-semibold text-secondary mb-2'>
                             <Lock className='w-4 h-4 text-primary' />
@@ -111,48 +132,56 @@ export const Login = () => {
                         </div>
                     </motion.div>
 
-                    {/* Remember me & Forgot password */}
+                    {/* Terms and conditions */}
                     <motion.div
-                        className='flex items-center justify-between text-sm'
+                        className='flex items-start gap-2 text-sm'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
                     >
-                        <label className='flex items-center gap-2 text-secondary/70 cursor-pointer hover:text-secondary transition-colors'>
-                            <input type='checkbox' className='rounded border-secondary/20 text-primary focus:ring-primary' />
-                            Recordarme
+                        <input
+                            type='checkbox'
+                            required
+                            className='mt-1 rounded border-secondary/20 text-primary focus:ring-primary'
+                        />
+                        <label className='text-secondary/70'>
+                            Acepto los{' '}
+                            <a href='#' className='text-complementary hover:text-complementary/80 transition-colors font-medium'>
+                                términos y condiciones
+                            </a>
+                            {' '}y la{' '}
+                            <a href='#' className='text-complementary hover:text-complementary/80 transition-colors font-medium'>
+                                política de privacidad
+                            </a>
                         </label>
-                        <a href='#' className='text-complementary hover:text-complementary/80 transition-colors font-medium'>
-                            ¿Olvidaste tu contraseña?
-                        </a>
                     </motion.div>
 
-                    {/* Login Button */}
+                    {/* Register Button */}
                     <motion.button
                         type='submit'
                         className='w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-secondary font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
+                        transition={{ duration: 0.5, delay: 0.7 }}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
                         <LogIn className='w-5 h-5' />
-                        Iniciar Sesión
+                        Crear Cuenta
                     </motion.button>
 
-                    {/* Sign up link */}
+                    {/* Sign in link */}
                     <motion.div
                         className='text-center pt-4 border-t border-secondary/10'
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.7 }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
                     >
                         <p className='text-secondary/60 text-sm'>
-                            ¿No tienes una cuenta?{' '}
-                            <Link to='/register' className='text-helper hover:text-helper/80 transition-colors font-semibold'>
-                                Regístrate aquí
-                            </Link>
+                            ¿Ya tienes una cuenta?{' '}
+                            <a href='/login' className='text-helper hover:text-helper/80 transition-colors font-semibold'>
+                                Inicia sesión aquí
+                            </a>
                         </p>
                     </motion.div>
                 </form>

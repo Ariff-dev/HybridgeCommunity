@@ -1,10 +1,12 @@
 import { ChevronDown, CircleX, LayoutGrid, LogIn } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import type { MenuState } from '@interfaces/ui'
 type MenuName = keyof MenuState
 
 export const Navbar = () => {
+  const navigate = useNavigate()
   const [openMenus, setOpenMenus] = useState<MenuState>({
     main: false,
     comunidad: false,
@@ -17,6 +19,11 @@ export const Navbar = () => {
       ...prev,
       [menuName]: !prev[menuName],
     }))
+  }
+
+  const handleNavigation = (path: string): void => {
+    navigate(path)
+    setOpenMenus({ main: false, comunidad: false, recursos: false, servicios: false })
   }
 
   return (
@@ -55,7 +62,11 @@ export const Navbar = () => {
           } md:hidden transition-transform duration-300 bg-contrast fixed top-0 left-0 min-h-screen w-4/5 text-white p-6 flex flex-col gap-6 pt-20`}
       >
         <ul className='flex flex-col gap-4'>
-          <li className='hover:text-helper cursor-pointer transition-colors'>Inicio</li>
+          <li>
+            <Link to="/" onClick={() => handleNavigation('/')} className='hover:text-helper cursor-pointer transition-colors block'>
+              Inicio
+            </Link>
+          </li>
 
           <div>
             <p
@@ -84,7 +95,10 @@ export const Navbar = () => {
 
           {/* Botón destacado de Iniciar Sesión */}
           <li className='mt-4 pt-4 border-t border-white/20'>
-            <button className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'>
+            <button
+              onClick={() => handleNavigation('/login')}
+              className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
+            >
               <LogIn width={20} height={20} />
               Iniciar Sesión
             </button>
@@ -98,8 +112,14 @@ export const Navbar = () => {
           } hidden md:block transition-all duration-200 fixed left-16 top-1/2 -translate-y-1/2 bg-contrast text-white rounded-lg shadow-2xl p-4 min-w-[200px]`}
       >
         <ul className='flex flex-col gap-3'>
-          <li className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded'>
-            Inicio
+          <li>
+            <Link
+              to="/"
+              onClick={() => handleNavigation('/')}
+              className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded block'
+            >
+              Inicio
+            </Link>
           </li>
 
           <div>
@@ -137,7 +157,10 @@ export const Navbar = () => {
 
           {/* Botón destacado de Iniciar Sesión */}
           <li className='mt-3 pt-3 border-t border-white/20'>
-            <button className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-3 rounded transition-all hover:scale-105'>
+            <button
+              onClick={() => handleNavigation('/login')}
+              className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-3 rounded transition-all hover:scale-105'
+            >
               <LogIn width={18} height={18} />
               Iniciar Sesión
             </button>
