@@ -1,21 +1,35 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Mail, Lock, LogIn, Eye, EyeOff } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
+import { useAuthStore } from '../../store/authStore'
+import { handleApiError } from '../../utils/errorHandler'
 
 export const Login = () => {
+    const navigate = useNavigate()
+    const login = useAuthStore((state) => state.login)
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     })
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Login attempt:', formData)
-        // TODO: Add authentication logic here
-        alert('Login functionality will be implemented soon!')
+        setIsLoading(true)
+
+        try {
+            await login(formData.email, formData.password)
+            // Navigate to home after successful login
+            navigate('/')
+        } catch (error) {
+            const errorMessage = handleApiError(error)
+            alert(errorMessage)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

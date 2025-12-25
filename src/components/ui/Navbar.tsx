@@ -1,12 +1,14 @@
-import { ChevronDown, CircleX, LayoutGrid, LogIn } from 'lucide-react'
+import { ChevronDown, CircleX, LayoutGrid, LogIn, LogOut, User as UserIcon } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../store/authStore'
 import type { MenuState } from '@interfaces/ui'
 type MenuName = keyof MenuState
 
 export const Navbar = () => {
   const navigate = useNavigate()
+  const { isAuthenticated, user, logout } = useAuthStore()
   const [openMenus, setOpenMenus] = useState<MenuState>({
     main: false,
     comunidad: false,
@@ -24,6 +26,12 @@ export const Navbar = () => {
   const handleNavigation = (path: string): void => {
     navigate(path)
     setOpenMenus({ main: false, comunidad: false, recursos: false, servicios: false })
+  }
+
+  const handleLogout = (): void => {
+    logout()
+    setOpenMenus({ main: false, comunidad: false, recursos: false, servicios: false })
+    navigate('/')
   }
 
   return (
@@ -93,15 +101,31 @@ export const Navbar = () => {
           <li className='hover:text-helper cursor-pointer transition-colors'>Postular</li>
           <li className='hover:text-helper cursor-pointer transition-colors'>Contacto</li>
 
-          {/* Botón destacado de Iniciar Sesión */}
+          {/* Botón destacado de Iniciar Sesión / Usuario */}
           <li className='mt-4 pt-4 border-t border-white/20'>
-            <button
-              onClick={() => handleNavigation('/login')}
-              className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
-            >
-              <LogIn width={20} height={20} />
-              Iniciar Sesión
-            </button>
+            {isAuthenticated ? (
+              <div className='space-y-3'>
+                <div className='flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg'>
+                  <UserIcon width={20} height={20} className='text-complementary' />
+                  <span className='font-semibold text-sm truncate'>{user?.name}</span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className='w-full flex items-center justify-center gap-2 bg-helper hover:bg-helper/80 text-contrast font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
+                >
+                  <LogOut width={20} height={20} />
+                  Cerrar Sesión
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => handleNavigation('/login')}
+                className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
+              >
+                <LogIn width={20} height={20} />
+                Iniciar Sesión
+              </button>
+            )}
           </li>
         </ul>
       </div>
@@ -155,15 +179,31 @@ export const Navbar = () => {
             Contacto
           </li>
 
-          {/* Botón destacado de Iniciar Sesión */}
+          {/* Botón destacado de Iniciar Sesión / Usuario */}
           <li className='mt-3 pt-3 border-t border-white/20'>
-            <button
-              onClick={() => handleNavigation('/login')}
-              className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-3 rounded transition-all hover:scale-105'
-            >
-              <LogIn width={18} height={18} />
-              Iniciar Sesión
-            </button>
+            {isAuthenticated ? (
+              <div className='space-y-2'>
+                <div className='flex items-center gap-2 px-3 py-2 bg-white/10 rounded'>
+                  <UserIcon width={16} height={16} className='text-complementary' />
+                  <span className='font-semibold text-xs truncate'>{user?.name}</span>
+                </div>
+                <button
+                  onClick={handleLogout}
+                  className='w-full flex items-center justify-center gap-2 bg-helper hover:bg-helper/80 text-contrast font-semibold py-2 px-3 rounded transition-all hover:scale-105'
+                >
+                  <LogOut width={18} height={18} />
+                  Cerrar Sesión
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => handleNavigation('/login')}
+                className='w-full flex items-center justify-center gap-2 bg-complementary hover:bg-complementary/80 text-white font-semibold py-2 px-3 rounded transition-all hover:scale-105'
+              >
+                <LogIn width={18} height={18} />
+                Iniciar Sesión
+              </button>
+            )}
           </li>
         </ul>
       </div>

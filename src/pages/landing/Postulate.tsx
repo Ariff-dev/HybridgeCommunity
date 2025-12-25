@@ -13,7 +13,7 @@ export const Postulate = () => {
 
   const handleSubmit = () => {
     console.log('Datos del formulario:', formData)
-    // Aquí puedes agregar la lógica para enviar los datos
+    // Here you can add the logic to send the data
     alert('¡Postulación enviada con éxito!')
     setIsOpen(false)
     setFormData({ name: '', email: '', task: '', message: '' })
@@ -31,7 +31,7 @@ export const Postulate = () => {
       {/* Sección de llamado a la acción */}
       <section className='py-16 px-4 bg-contrast border-t border-secondary/10'>
         <div className='max-w-4xl mx-auto'>
-          <motion.div 
+          <motion.div
             className='bg-linear-to-br from-primary/5 via-complementary/5 to-helper/5 rounded-2xl p-8 md:p-12 border border-primary/20 relative overflow-hidden'
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,21 +41,21 @@ export const Postulate = () => {
             {/* Decorative elements */}
             <div className='absolute top-0 right-0 w-64 h-64 bg-complementary/10 rounded-full blur-3xl'></div>
             <div className='absolute bottom-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl'></div>
-            
+
             <div className='relative z-10 text-center'>
               <div className='inline-block mb-4 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full'>
                 <span className='text-primary text-sm font-mono tracking-wider'>{'<Apply />'}</span>
               </div>
-              
+
               <h3 className='text-3xl md:text-4xl font-bold text-secondary mb-4'>
                 ¿Eres parte de la comunidad?
               </h3>
-              
+
               <p className='text-lg text-secondary/70 mb-8 max-w-2xl mx-auto'>
-                Si quieres colaborar y tomar alguna de las tareas disponibles, postúlate aquí. 
+                Si quieres colaborar y tomar alguna de las tareas disponibles, postúlate aquí.
                 ¡Tu contribución es valiosa!
               </p>
-              
+
               <motion.button
                 onClick={() => setIsOpen(true)}
                 className='inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary/90 text-contrast font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300'

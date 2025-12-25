@@ -9,7 +9,7 @@ import { Register } from './pages/auth/Register'
 function App() {
   const location = useLocation()
 
-  // No mostrar Footer en páginas de autenticación
+  // Don't show Footer on auth pages
   const hideFooter = location.pathname === '/login' || location.pathname === '/register'
 
   return (

@@ -1,21 +1,36 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link, useNavigate } from 'react-router-dom'
 import { Mail, Lock, LogIn, Eye, EyeOff, User } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
+import { useAuthStore } from '../../store/authStore'
+import { handleApiError } from '../../utils/errorHandler'
 
 export const Register = () => {
+    const navigate = useNavigate()
+    const register = useAuthStore((state) => state.register)
     const [showPassword, setShowPassword] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: ''
     })
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Register attempt:', formData)
-        // TODO: Add registration logic here
-        alert('Registro exitoso! La funcionalidad se implementará pronto.')
+        setIsLoading(true)
+
+        try {
+            await register(formData.name, formData.email, formData.password)
+            // Navigate to home after successful registration
+            navigate('/')
+        } catch (error) {
+            const errorMessage = handleApiError(error)
+            alert(errorMessage)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
