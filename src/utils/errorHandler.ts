@@ -15,6 +15,11 @@ export const handleApiError = (error: unknown): string => {
             return firstError ? firstError[0] : apiError.message
         }
 
+        // Special case: Email registration requirements
+        if (apiError.status === 401 && apiError.message === 'Email does not meet registration requirements') {
+            return 'Lo siento, no cumples con los requisitos para crear una cuenta'
+        }
+
         // Handle errors by status code
         if (apiError.status) {
             switch (apiError.status) {
