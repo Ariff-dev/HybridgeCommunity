@@ -5,7 +5,7 @@ import { apiService } from '../services/api'
 
 export const useAuthStore = create<AuthState>()(
     persist(
-        (set) => ({
+        (set, get) => ({
             user: null,
             token: null,
             refreshToken: null,
@@ -73,10 +73,10 @@ export const useAuthStore = create<AuthState>()(
             logout: async () => {
                 try {
                     // Get refresh token before clearing state
-                    const currentRefreshToken = (set as any).getState?.()?.refreshToken
+                    const { refreshToken } = get()
 
-                    if (currentRefreshToken) {
-                        await apiService.logout(currentRefreshToken)
+                    if (refreshToken) {
+                        await apiService.logout(refreshToken)
                     }
                 } catch (error) {
                     console.error('Logout error:', error)

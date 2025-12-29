@@ -76,10 +76,16 @@ export const Navbar = () => {
             </Link>
           </li>
 
+          <li>
+            <Link to="/blog" onClick={() => handleNavigation('/blog')} className='hover:text-helper cursor-pointer transition-colors block'>
+              Blog
+            </Link>
+          </li>
+
           <div>
             <p
-              className='flex items-center cursor-pointer hover:text-helper transition-colors'
               onClick={() => toggleMenu('comunidad')}
+              className='flex items-center gap-2 hover:text-helper cursor-pointer transition-colors'
             >
               Comunidad
               <span>
@@ -143,6 +149,16 @@ export const Navbar = () => {
               className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded block'
             >
               Inicio
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to="/blog"
+              onClick={() => handleNavigation('/blog')}
+              className='hover:text-helper cursor-pointer transition-colors py-1 px-2 hover:bg-white/10 rounded block'
+            >
+              Blog
             </Link>
           </li>
 

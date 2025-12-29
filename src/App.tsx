@@ -5,6 +5,7 @@ import { Navbar } from './components/ui/Navbar'
 import { Lading } from './pages/landing/Lading'
 import { Login } from './pages/auth/Login'
 import { Register } from './pages/auth/Register'
+import { BlogView } from './pages/blog/Preview/BlogView'
 
 function App() {
   const location = useLocation()
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Lading />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/blog" element={<BlogView />} />
       </Routes>
       {!hideFooter && <Footer />}
     </>
