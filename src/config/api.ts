@@ -9,6 +9,12 @@ export const API_CONFIG = {
         logout: '/api/auth/logout',
         me: '/api/auth/me',
         refresh: '/api/auth/refresh',
+        blogPosts: '/api/blog/posts',
+        createBlogPost: '/api/blog/posts',
+        updateBlogPost: (id: string) => `/api/blog/posts/${id}`,
+        deleteBlogPost: (id: string) => `/api/blog/posts/${id}`,
+        publishBlogPost: (id: string) => `/api/blog/posts/${id}/publish`,
+        likeBlogPost: (id: string) => `/api/blog/posts/${id}/like`,
     },
     headers: {
         'Content-Type': 'application/json',

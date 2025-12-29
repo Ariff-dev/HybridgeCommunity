@@ -1,4 +1,4 @@
-import { ChevronDown, CircleX, LayoutGrid, LogIn, LogOut, User as UserIcon } from 'lucide-react'
+import { ChevronDown, CircleX, LayoutGrid, LogIn, LogOut, User as UserIcon, Settings } from 'lucide-react'
 import Logo from '../../assets/hybrige.svg'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -116,6 +116,13 @@ export const Navbar = () => {
                   <span className='font-semibold text-sm truncate'>{user?.name}</span>
                 </div>
                 <button
+                  onClick={() => handleNavigation('/admin')}
+                  className='w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-secondary font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
+                >
+                  <Settings width={20} height={20} />
+                  Panel Admin
+                </button>
+                <button
                   onClick={handleLogout}
                   className='w-full flex items-center justify-center gap-2 bg-helper hover:bg-helper/80 text-contrast font-semibold py-2 px-4 rounded-lg transition-all hover:scale-105'
                 >
@@ -203,6 +210,13 @@ export const Navbar = () => {
                   <UserIcon width={16} height={16} className='text-complementary' />
                   <span className='font-semibold text-xs truncate'>{user?.name}</span>
                 </div>
+                <button
+                  onClick={() => handleNavigation('/admin')}
+                  className='w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/80 text-secondary font-semibold py-2 px-3 rounded transition-all hover:scale-105'
+                >
+                  <Settings width={18} height={18} />
+                  Panel Admin
+                </button>
                 <button
                   onClick={handleLogout}
                   className='w-full flex items-center justify-center gap-2 bg-helper hover:bg-helper/80 text-contrast font-semibold py-2 px-3 rounded transition-all hover:scale-105'
